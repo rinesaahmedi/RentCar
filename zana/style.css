@@ -28,6 +28,7 @@ section {
 }
 header {
    position: fixed;
+   background-color: #101010;
    width: 100%;
    height: 90px;
    top: 0;
@@ -38,6 +39,12 @@ header {
    justify-content: space-between;
    padding: 15px 90px;
 }
+
+.container{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
 .logo img {
     width: 100px;
 }
@@ -76,16 +83,17 @@ header {
 /*me dal sign up sign in me zi (se me kalter)*/
 .header-btn a {
     padding: 10px 20px;
-    color: var(--text-color);
+    color: white;
     font-weight: 500;
 }
 .header-btn .sign-in {
-    background: #000000;
+    border: 1px solid white;
     color: #fff;
     border-radius: 0.5rem;
 }
 .header-btn .sign-in:hover{
-    background: var(--text-color);
+    background: white;
+    color: #000000;
 }
 .home {
    width: 100%;
@@ -97,15 +105,18 @@ header {
    background-size: cover;
    display: grid;
    align-items: center;
+   justify-content: center;
    grid-template-columns: repeat(2, 1fr);
 }
 .text h1 {
+    text-align: center;
     font-size: 4rem;
     letter-spacing: 3px;
-    color: var(--text-color);
+    color: white;
 }
 
 .text p{
+    text-align: center;
     margin: 00.5rem 0 1rem;
     color: grey;
 }
@@ -113,6 +124,7 @@ header {
     color: var(--text-color);
 }
 .app-stores {
+    justify-content: center;
     display: flex;
 }
 .app-stores img {
@@ -121,17 +133,23 @@ header {
     cursor: pointer;
 }
 /*pjesa e location/marrjes/kthimit*/
-.form-container form {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 1rem;
-    position: absolute;
-    bottom: 3rem;
-    left: 100px;
-    background: rgb(255, 255, 255);
-    padding: 20px;
-    border-radius: 0.5rem;
+@media only screen and (min-width: 992px){
+    .form-container{
+        display: flex;
+        justify-content: center ;
+    }
+    .form-container form {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 70%;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        background: rgb(255, 255, 255);
+        padding: 20px;
+        border-radius: 0.5rem;
+    }
+    
 }
 
 .btn{
@@ -156,15 +174,34 @@ header {
 .form-container form .btn{
     flex: 1 1 7rem;
     padding: 10px 3px;
-    border: none;
+    border: 1px solid black;
     border-radius: 0.5rem;
     background: #fff;
     font-size: 1rem;
     font-weight: 500;
 }
 .form-container form .btn:hover{
-    background: var(--main-color);
+    background: black;
+    color: white;
 }
+@media only screen and (max-width: 768px) {
+    .form-container form {
+        display: flex;
+        flex-direction: column;
+        display: flex;
+        flex-wrap: nowrap;
+        /* width: 70%; */
+        /* align-items: center; */
+        justify-content: center;
+        /* gap: 1rem; */
+        background: rgb(255, 255, 255);
+        padding: 20px;
+        border-radius: 0.5rem;
+    }
+    .form-container form .btn {
+        flex: 00;
+    }
+  }
 .heading { 
     text-align: center;
 }
@@ -176,14 +213,15 @@ header {
     font-size: 2rem;
 }
 
-.ride-container{
-    display: grid;
+.ride {
+    display: flex;
     align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(250px,auto));
     gap:1rem;
     margin-top: 2rem;
 
 }
+
 
 .ride-container .box{
     text-align: center;
@@ -205,6 +243,11 @@ header {
     font-weight: 500;
     margin: 1.4rem 0 0.5rem;
 }
+@media only screen and (max-width: 768px){
+    .ride{
+        display: grid;
+    }
+}
 
 .services-container{
     display: grid;
@@ -212,6 +255,10 @@ header {
     gap: 1rem;
     margin-top: 2rem;
 
+}
+.box-img{
+    display: flex;
+    justify-content: center;
 }
 
 .services-container .box{
