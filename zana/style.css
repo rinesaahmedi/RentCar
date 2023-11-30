@@ -304,7 +304,8 @@ header {
         align-items: center;
         justify-content: center;
         gap: 1rem;
-        background: rgb(255, 255, 255);
+        color: #ddd;
+        background:#0d0c0e;
         padding: 20px;
         border-radius: 0.5rem;
     }
@@ -319,6 +320,7 @@ header {
     flex: 1 1 7rem;
     display: flex;
     flex-direction: column;
+    color: #ddd;
 }
 .input-box span {
     font-weight: 500;
@@ -327,16 +329,18 @@ header {
     padding: 7px;
     outline: none;
     border: none;
-    background: #eeeff1;
+    color: #ddd;
+    background: #2f2c2c;
     border-radius: 0.5rem;
     font-size: 1rem;
 }
 .form-container form .btn {
     flex: 1 1 7rem;
     padding: 10px 3px;
-    border: 1px solid black;
+    border: 1px solid rgb(215, 211, 211);
+    color: #c0c0c0;
     border-radius: 0.5rem;
-    background: #fff;
+    background: #131212;
     font-size: 1rem;
     font-weight: 500;
 }
@@ -543,7 +547,7 @@ header {
     color: var(--main-color);
 }
 .newsletter {
-    background: linear-gradient(to top right,#fe5b3d ,#ffac38 );
+    background: linear-gradient(to top right,#171615 ,#4f38ff );
     display: flex;
     flex-direction: column;
     align-items: center;

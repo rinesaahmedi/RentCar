@@ -250,7 +250,7 @@
 
         <div class="form-link">
           <span>Don't have an account?
-            <a href="#" class="link signup-link">Signup</a></span>
+            <a href="#" class="link signup-link">Sign up</a></span>
         </div>
       </div>
 
@@ -326,35 +326,84 @@
   </section>
 
   <!-- JavaScript -->
-  <script>
-    const forms = document.querySelector('.forms'),
-      pwShowHide = document.querySelectorAll('.eye-icon'),
-      links = document.querySelectorAll('.link');
-
-    pwShowHide.forEach((eyeIcon) => {
-      eyeIcon.addEventListener('click', () => {
-        let pwFields =
-          eyeIcon.parentElement.parentElement.querySelectorAll('.password');
-
-        pwFields.forEach((password) => {
-          if (password.type === 'password') {
-            password.type = 'text';
-            eyeIcon.classList.replace('bx-hide', 'bx-show');
-            return;
-          }
-          password.type = 'password';
-          eyeIcon.classList.replace('bx-show', 'bx-hide');
-        });
-      });
-    });
-
-    links.forEach((link) => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault(); //preventing form submit
-        forms.classList.toggle('show-signup');
-      });
-    });
-  </script>
+  
 </body>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const loginForm = document.querySelector('.form.login form');
+    const signupForm = document.querySelector('.form.signup form');
+
+    function validateEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    function validatePassword(password) {
+      return password.length >= 8;
+    }
+
+    function showError(element, message) {
+      const errorElement = document.createElement('p');
+      errorElement.className = 'error-message';
+      errorElement.textContent = message;
+
+      const existingError = element.parentElement.querySelector('.error-message');
+      if (existingError) {
+        element.parentElement.removeChild(existingError);
+      }
+
+      element.parentElement.appendChild(errorElement);
+    }
+
+    function removeError(element) {
+      const existingError = element.parentElement.querySelector('.error-message');
+      if (existingError) {
+        element.parentElement.removeChild(existingError);
+      }
+    }
+
+    function validateLoginForm() {
+      const emailInput = loginForm.querySelector('input[type="email"]');
+      const passwordInput = loginForm.querySelector('input[type="password"]');
+
+      if (!validateEmail(emailInput.value)) {
+        showError(emailInput, 'Invalid email address');
+      } else {
+        removeError(emailInput);
+      }
+
+      if (!validatePassword(passwordInput.value)) {
+        showError(passwordInput, 'Password must be at least 8 characters long');
+      } else {
+        removeError(passwordInput);
+      }
+    }
+
+    function validateSignupForm() {
+      const emailInput = signupForm.querySelector('input[type="email"]');
+      const passwordInput = signupForm.querySelector('input[type="password"]');
+      const confirmPasswordInput = signupForm.querySelector('input[type="password"]:last-of-type');
+
+      if (!validateEmail(emailInput.value)) {
+        showError(emailInput, 'Invalid email address');
+      } else {
+        removeError(emailInput);
+      }
+
+      if (!validatePassword(passwordInput.value)) {
+        showError(passwordInput, 'Password must be at least 8 characters long');
+      } else {
+        removeError(passwordInput);
+      }
+
+      if (passwordInput.value !== confirmPasswordInput.value) {
+        showError(confirmPasswordInput, 'Passwords do not match');
+      } else {
+        removeError(confirmPasswordInput);
+      }
+    }
+
+  });
+</script>
 
 </html>
